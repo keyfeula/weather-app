@@ -7,43 +7,30 @@
 
 html {
     font-family: system-ui, sans-serif;
-    --header-color: #494949;
-    --shadow-color: #232323;
 }
 
 body {
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 3fr;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
+    background: #303030;
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--header-color);
-    box-shadow: 0 0 5px 5px var(--shadow-color);
-}
-
-.controls {
-    padding: 1rem;
-    display: flex;
-    gap: 1rem;
-}
-
-label {
-    font-size: 1.1rem;
-}
-
-button {
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    border: none;
 }
 
 main {
-    z-index: -1;
+    background: #000000;
+    flex-grow: 1;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+main > div {
+    background: #303030;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 50%;
 }
