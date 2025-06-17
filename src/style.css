@@ -7,6 +7,7 @@
 
 html {
     font-family: system-ui, sans-serif;
+    --card-bg-color: #bbbbbb;
 }
 
 body {
@@ -20,6 +21,20 @@ header {
     padding: 1rem;
 }
 
+header h1 {
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    margin-bottom: 0.5rem;
+}
+
+.search-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+}
+
 main {
     background: #000000;
     flex-grow: 1;
@@ -31,6 +46,19 @@ main {
 main > div {
     background: #303030;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 10px;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.current-container > div {
+    flex-grow: 1;
+}
+
+.weather-card {
+    background: var(--card-bg-color);
+    border-radius: 10px;
+    padding: 1rem;
 }

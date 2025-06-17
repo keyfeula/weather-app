@@ -7,17 +7,27 @@
     <body>
         <header>
             <h1>Weather App</h1>
-            <div>
+            <div class="search-container">
                 <label for="search">Search a location:</label>
-                <input type="search">
+                <input type="search" id="search" name="user-search">
             </div>
+            <button type="button" class="search-btn">Search</button>
         </header>
         <main>
-            <div class="current-weather">
+            <div class="current-container">
                 <h2>Today's Weather</h2>
+                <div class="current weather-card">
+                    Current
+                </div>
             </div>
-            <div class="forecast">
+            <div class="forecast-container">
                 <h2>Future Weather</h2>
+                <div class="day weather-card">Day 1</div>
+                <div class="day weather-card">Day 2</div>
+                <div class="day weather-card">Day 3</div>
+                <div class="day weather-card">Day 4</div>
+                <div class="day weather-card">Day 5</div>
+                <div class="day weather-card">Day 6</div>
             </div>
         </main>
     </body>
