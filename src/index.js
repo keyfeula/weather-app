@@ -27,9 +27,11 @@ function storeData(json) {
         let currentDay = json.days[i];
         console.log("current" + currentDay.tempmax);
         const day = {
+            currentTemp: currentDay.temp,
             maxTemp: currentDay.tempmax,
             minTemp: currentDay.tempmin,
-            desc: currentDay.description
+            desc: currentDay.description,
+            date: currentDay.datetime
         };
         days.push(day);
     }
@@ -37,7 +39,17 @@ function storeData(json) {
 
 function displayWeather() {
     for (let i = 0; i < weatherCards.length; i++) {
-        weatherCards[i].textContent = days[i].maxTemp;
+        if (i === 0) {
+            weatherCards[i].children[0].textContent = days[i].currentTemp;
+            weatherCards[i].children[1].textContent = days[i].maxTemp;
+            weatherCards[i].children[2].textContent = days[i].minTemp;
+            weatherCards[i].children[3].textContent = days[i].desc;
+        }
+        else {
+            weatherCards[i].children[0].textContent = days[i].maxTemp;
+            weatherCards[i].children[1].textContent = days[i].minTemp;
+            weatherCards[i].children[2].textContent = days[i].desc;
+        }
     }
 }
 
