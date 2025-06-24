@@ -3,8 +3,10 @@ import "./style.css";
 const searchInput = document.getElementById("search");
 const searchBtn = document.querySelector(".search-btn");
 const unitsBtn = document.querySelector(".units-btn");
-const weatherCards = document.querySelectorAll(".weather-card");
+const weatherCards = document.querySelectorAll(".card");
+const locationHeading = document.querySelector("h2.location");
 let days = [];
+let location;
 let degreeUnits = "F";
 
 async function getWeather(location) {
@@ -26,6 +28,7 @@ async function getWeather(location) {
 
 function storeData(json) {
     days = [];
+    location = json.resolvedAddress;
     for (let i = 0; i < json.days.length; i++) {
         let currentDay = json.days[i];
         const day = {
@@ -40,19 +43,24 @@ function storeData(json) {
 }
 
 function displayWeather() {
+    locationHeading.textContent = location;
     for (let i = 0; i < weatherCards.length; i++) {
         let card = weatherCards[i];
         let day = days[i];
         if (i === 0) {
-            card.children[0].textContent = `Current: ${day.currentTemp.toFixed(0)} ${degreeUnits}`;
-            card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} ${degreeUnits}`;
-            card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} ${degreeUnits}`;
+            card.children[0].textContent = `Current: ${day.currentTemp.toFixed(0)} °${degreeUnits}`;
+            card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} °${degreeUnits}`;
+            card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} °${degreeUnits}`;
             card.children[3].textContent = day.desc;
         }
         else {
-            card.children[0].textContent = `High: ${day.maxTemp.toFixed(0)} ${degreeUnits}`;
-            card.children[1].textContent = `Low: ${day.minTemp.toFixed(0)} ${degreeUnits}`;
-            card.children[2].textContent = day.desc;
+            console.log("Date: " + day.date);
+            let dayOfWeek = new Date(day.date + "T00:00");
+            let dateArr = dayOfWeek.toString().split(" ");
+            card.children[0].textContent = `${dateArr[0]} ${dateArr[1]} ${dateArr[2]}`;
+            card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} °${degreeUnits}`;
+            card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} °${degreeUnits}`;
+            card.children[3].textContent = day.desc;
         }
     }
 }

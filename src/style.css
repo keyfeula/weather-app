@@ -27,6 +27,20 @@ header {
     white-space: nowrap;
 }
 
+.search-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-container label {
+    align-self: center;
+}
+
+input {
+    width: 15rem;
+    padding-left: 0.5rem;
+}
+
 button {
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -37,58 +51,68 @@ main {
     background: #000000;
     flex-grow: 1;
     display: flex;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-main > div {
-    background: #000000;
-    color: #ffffff;
-    border-radius: 10px;
-    width: 50%;
-    display: flex;
     flex-direction: column;
+    padding: 2rem 1rem;
+    justify-content: flex-start;
     gap: 1rem;
+    color: white;
 }
 
-.current {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    font-size: 1.5rem;
-}
-
-.current .current-temp {
-    grid-area: 1 / 1 / 3 / 2;
-    font-size: 2rem;
-}
-
-.current .description {
-    grid-area: 3 / 1 / 4 / 3;
-}
-
-.weather-card {
-    background: var(--card-bg-color);
-    border-radius: 10px;
-    padding: 1rem;
-    flex-grow: 1;
-}
-
-.day {
+.current-container {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
 }
 
-.day > div {
-    flex-grow: 1;
+.current-container h2 {
+    align-self: center;
 }
 
-.weather-card > div {
-    background: #000000;
+.current-card {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+.card > div {
+    border: 1px solid white;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+}
+
+.current-temp {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.current-desc {
+    grid-area: 1 / 3 / 3 / 4;
+}
+
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
     padding: 1rem;
+}
+
+.forecast-card {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+}
+
+.date {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+.forecast-high, .forecast-low {
+    white-space: nowrap;
+}
+
+.forecast-desc {
+    grid-area: 2 / 2 / 4 / 3;
 }
