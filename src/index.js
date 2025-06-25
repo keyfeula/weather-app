@@ -9,6 +9,8 @@ let days = [];
 let location;
 let degreeUnits = "F";
 
+getWeather("New York");
+
 async function getWeather(location) {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=Y3BAL4LE6TF6V5CK4NMEJSJVD&contentType=json`;
     try {
@@ -28,6 +30,7 @@ async function getWeather(location) {
 
 function storeData(json) {
     days = [];
+    degreeUnits = "F";
     location = json.resolvedAddress;
     for (let i = 0; i < json.days.length; i++) {
         let currentDay = json.days[i];
