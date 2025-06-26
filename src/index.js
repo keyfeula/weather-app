@@ -1,17 +1,32 @@
 import "./style.css";
 
 const searchInput = document.getElementById("search");
+const searchLabel = document.querySelector(".search-container label");
 const searchBtn = document.querySelector(".search-btn");
 const unitsBtn = document.querySelector(".units-btn");
 const weatherCards = document.querySelectorAll(".card");
 const locationHeading = document.querySelector("h2.location");
+const currentDateHeading = document.querySelector("h2.current-date");
+
 let days = [];
 let location;
 let degreeUnits = "F";
+let firstQuery = true;
 
-getWeather("New York");
+searchLabel.focus();
+getWeather("Los Angeles");
 
 async function getWeather(location) {
+    searchInput.setCustomValidity("");
+    if (firstQuery) {
+        firstQuery = false;
+    }
+    else if (!searchInput.validity.valid) {
+        searchInput.setCustomValidity("Please enter a location");
+        searchInput.reportValidity();
+        return;
+    }
+
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=Y3BAL4LE6TF6V5CK4NMEJSJVD&contentType=json`;
     try {
         const response = await fetch(url);
@@ -19,7 +34,6 @@ async function getWeather(location) {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        console.log(json);
         storeData(json);
         displayWeather();
     }
@@ -45,22 +59,29 @@ function storeData(json) {
     }
 }
 
-function displayWeather() {
-    locationHeading.textContent = location;
+function displayWeather() {  
     for (let i = 0; i < weatherCards.length; i++) {
         let card = weatherCards[i];
         let day = days[i];
+        let date;
+
         if (i === 0) {
+            date = new Date(days[0].date + "T00:00");
+            date = date.toString().split(" ");
+            date = `${date[0]} ${date[1]} ${date[2]}`;
+            currentDateHeading.textContent = date;
+            locationHeading.textContent = location;
+
             card.children[0].textContent = `Current: ${day.currentTemp.toFixed(0)} °${degreeUnits}`;
             card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} °${degreeUnits}`;
             card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} °${degreeUnits}`;
             card.children[3].textContent = day.desc;
         }
         else {
-            console.log("Date: " + day.date);
-            let dayOfWeek = new Date(day.date + "T00:00");
-            let dateArr = dayOfWeek.toString().split(" ");
-            card.children[0].textContent = `${dateArr[0]} ${dateArr[1]} ${dateArr[2]}`;
+            date = new Date(day.date + "T00:00");
+            date = date.toString().split(" ");
+
+            card.children[0].textContent = `${date[0]} ${date[1]} ${date[2]}`;
             card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} °${degreeUnits}`;
             card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} °${degreeUnits}`;
             card.children[3].textContent = day.desc;
@@ -68,8 +89,7 @@ function displayWeather() {
     }
 }
 
-searchBtn.addEventListener("click", () => getWeather(searchInput.value));
-unitsBtn.addEventListener("click", () => {
+function convertDegreeUnits() {
     if (degreeUnits === "F") {
         degreeUnits = "C";
         for (let day of days) {
@@ -86,5 +106,10 @@ unitsBtn.addEventListener("click", () => {
             day.currentTemp = day.currentTemp * 1.8 + 32;
         }
     }
+}
+
+searchBtn.addEventListener("click", () => getWeather(searchInput.value));
+unitsBtn.addEventListener("click", () => {
+    convertDegreeUnits();
     displayWeather();
 })

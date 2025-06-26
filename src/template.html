@@ -9,14 +9,17 @@
             <h1>Weather App</h1>
             <div class="search-container">
                 <label for="search">Search a location:</label>
-                <input type="search" id="search" name="user-search">
+                <input type="search" id="search" name="user-search" maxlength="25" required>
                 <button type="button" class="search-btn">Search</button>
             </div>
             <button type="button" class="units-btn">Change units (°F/°C)</button>
         </header>
         <main>
             <div class="current-container">
-                <h2 class="location"></h2>
+                <div class="current-info">
+                    <h2 class="current-date"></h2>
+                    <h2 class="location"></h2>
+                </div>
                 <div class="current-card card">
                     <div class="current-temp"></div>
                     <div class="current-high"></div>
