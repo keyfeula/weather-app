@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather App</title>
+    <script defer src="main.js"></script></head>
+    <body>
+        <header>
+            <h1>Weather App</h1>
+            <div class="search-container">
+                <label for="search">Search a location:</label>
+                <input type="search" id="search" name="user-search" maxlength="25" required>
+                <button type="button" class="search-btn">Search</button>
+            </div>
+            <button type="button" class="units-btn">Change units (°F/°C)</button>
+        </header>
+        <main>
+            <div class="current-container">
+                <div class="current-info">
+                    <h2 class="current-date"></h2>
+                    <h2 class="location"></h2>
+                </div>
+                <div class="current-card card">
+                    <div class="current-temp"></div>
+                    <div class="current-high"></div>
+                    <div class="current-low"></div>
+                    <div class="current-desc"></div>
+                </div>
+            </div>
+            <div class="forecast-container">
+                <div class="forecast-card card" id="day-1">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
+                </div>
+                <div class="forecast-card card" id="day-2">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
+                </div>
+                <div class="forecast-card card" id="day-3">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
+                </div>
+                <div class="forecast-card card" id="day-4">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
+                </div>
+                <div class="forecast-card card" id="day-5">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
+                </div>
+                <div class="forecast-card card" id="day-6">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
