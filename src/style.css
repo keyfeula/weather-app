@@ -34,6 +34,7 @@ header {
 .search-container {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .search-container label {
@@ -42,10 +43,11 @@ header {
 
 input {
     width: 15rem;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
     background: var(--light-color);
     border: none;
     outline: none;
+    flex-shrink: 1;
 }
 
 button {
@@ -139,4 +141,13 @@ main {
 
 .forecast-desc {
     grid-area: 2 / 2 / 4 / 3;
+}
+
+@media (max-width: 600px) {
+
+    .current-card {
+        display: flex;
+        flex-direction: column;
+    }
+    
 }
