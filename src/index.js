@@ -14,7 +14,7 @@ let degreeUnits = "F";
 let firstQuery = true;
 
 searchLabel.focus();
-getWeather("Los Angeles");
+getWeather("Phoenix, AZ");
 
 async function getWeather(location) {
     searchInput.setCustomValidity("");
@@ -65,6 +65,7 @@ function displayWeather() {
         let day = days[i];
         let date;
 
+        console.log(day.desc);
         if (i === 0) {
             date = new Date(days[0].date + "T00:00");
             date = date.toString().split(" ");
@@ -75,7 +76,7 @@ function displayWeather() {
             card.children[0].textContent = `Current: ${day.currentTemp.toFixed(0)} °${degreeUnits}`;
             card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} °${degreeUnits}`;
             card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} °${degreeUnits}`;
-            card.children[3].textContent = day.desc;
+            card.children[3].textContent = getDescEmoji(day.desc);
         }
         else {
             date = new Date(day.date + "T00:00");
@@ -84,8 +85,24 @@ function displayWeather() {
             card.children[0].textContent = `${date[0]} ${date[1]} ${date[2]}`;
             card.children[1].textContent = `High: ${day.maxTemp.toFixed(0)} °${degreeUnits}`;
             card.children[2].textContent = `Low: ${day.minTemp.toFixed(0)} °${degreeUnits}`;
-            card.children[3].textContent = day.desc;
+            card.children[3].textContent = getDescEmoji(day.desc);
         }
+    }
+}
+
+function getDescEmoji(desc) {
+    desc = desc.toLowerCase();
+    if (desc.includes("snow")) {
+        return "❄️";
+    }
+    else if (desc.includes("rain")) {
+        return "🌧️";
+    }
+    else if (desc.includes("cloud")) {
+        return "☁️";
+    }
+    else {
+        return "☀️";
     }
 }
 

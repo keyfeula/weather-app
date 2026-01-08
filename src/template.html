@@ -11,9 +11,11 @@
             <div class="search-container">
                 <label for="search">Search a location:</label>
                 <input type="search" id="search" name="user-search" maxlength="25" required>
-                <button type="button" class="search-btn">Search</button>
+                <div class="buttons">
+                    <button type="button" class="search-btn">Search</button>
+                    <button type="button" class="units-btn">Change units (°F/°C)</button>
+                </div>
             </div>
-            <button type="button" class="units-btn">Change units (°F/°C)</button>
         </header>
         <main>
             <div class="current-container">
@@ -21,11 +23,11 @@
                     <h2 class="current-date"></h2>
                     <h2 class="location"></h2>
                 </div>
-                <div class="current-card card">
-                    <div class="current-temp"></div>
-                    <div class="current-high"></div>
-                    <div class="current-low"></div>
-                    <div class="current-desc"></div>
+                <div class="forecast-card card" id="day-1">
+                    <div class="date"></div>
+                    <div class="forecast-high"></div>
+                    <div class="forecast-low"></div>
+                    <div class="forecast-desc"></div>
                 </div>
             </div>
             <div class="forecast-container">
