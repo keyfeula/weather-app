@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Weather App</title>
-    <script defer src="main.js"></script></head>
+        <link rel="icon" href="./weather-icon.png" type="image/png">
+    <link rel="icon" href="weather-icon.png"><script defer src="main.js"></script></head>
     <body>
         <header>
             <h1>Weather App</h1>
@@ -13,7 +14,7 @@
                 <input type="search" id="search" name="user-search" maxlength="25" required>
                 <div class="buttons">
                     <button type="button" class="search-btn">Search</button>
-                    <button type="button" class="units-btn">Change units (°F/°C)</button>
+                    <button type="button" class="units-btn"><span class="degrees-f active-temp">°F</span>/<span class="degrees-c">°C</span></button>
                 </div>
             </div>
         </header>
